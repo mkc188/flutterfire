@@ -135,14 +135,14 @@ class FirebaseMessaging {
         },
       );
 
-      _channel.invokeMethod<void>(
-        'registerChannel',
-        <String, String>{
-          'id': '1',
-          'name': 'App notifications',
-          'description': 'Lorem ipsum dolor sit amet.'
-        },
-      );
+      if (_platform.isAndroid) {
+        _channel.invokeMethod<void>(
+          'registerChannel', <String, String>{
+            'id': '1', 'name': 'App notifications', 'description': 'Lorem
+            ipsum dolor sit amet.'
+          },
+        );
+      }
     }
   }
 
