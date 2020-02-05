@@ -5,6 +5,7 @@
 package io.flutter.plugins.firebasemessaging;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -286,6 +287,28 @@ public class FirebaseMessagingPlugin extends BroadcastReceiver
       Boolean isEnabled = (Boolean) call.arguments();
       FirebaseMessaging.getInstance().setAutoInitEnabled(isEnabled);
       result.success(null);
+
+    } else if(call.method.equals("registerChannel")) {
+      if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        String id = call.argument("id");
+        String name = call.argument("name");
+        String description = call.argument("description");
+
+        android.app.NotificationChannel mChannel =
+                new android.app.NotificationChannel(id, name,
+                        NotificationManager.IMPORTANCE_MAX);
+        mChannel.setDescription(description);
+
+        android.app.NotificationManager notificationManager =
+                (android.app.NotificationManager) applicationContext.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.createNotificationChannel(mChannel);
+
+        result.success(null);
+      } else {
+        // No-op
+        result.success(null);
+      }
     } else {
       result.notImplemented();
     }
@@ -330,3 +353,4 @@ public class FirebaseMessagingPlugin extends BroadcastReceiver
     return false;
   }
 }
+

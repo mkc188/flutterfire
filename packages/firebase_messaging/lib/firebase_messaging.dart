@@ -134,6 +134,15 @@ class FirebaseMessaging {
           'backgroundHandle': backgroundMessageHandle.toRawHandle()
         },
       );
+
+      _channel.invokeMethod<void>(
+        'registerChannel',
+        <String, String>{
+          'id': '1',
+          'name': 'App notifications',
+          'description': 'Lorem ipsum dolor sit amet.'
+        },
+      );
     }
   }
 
@@ -236,3 +245,4 @@ class IosNotificationSettings {
   @override
   String toString() => 'PushNotificationSettings ${toMap()}';
 }
+
