@@ -1,3 +1,32 @@
+## 0.3.0+1
+
+* Bump `firebase_auth_platform_interface` dependency to fix an assertion issue when creating Google sign-in credentials.
+
+## 0.3.0
+
+* See the `firebase_auth` plugin changelog.
+* Depend on `firebase_core`.
+
+## 0.1.3+1
+
+* Implement `confirmPasswordReset`.
+
+## 0.1.3
+
+* Update lower bound of dart dependency to 2.0.0.
+
+## 0.1.2+2
+
+* Make the pedantic dev_dependency explicit.
+
+## 0.1.2+1
+
+* Require `firebase_core_web` from hosted
+
+## 0.1.2
+
+* Implement `fetchSignInMethodsForEmail`, `isSignInWithEmailLink`, `signInWithEmailAndLink`, and `sendLinkToEmail`. 
+
 ## 0.1.1+4
 
 * Prevent `null` users (unauthenticated) from breaking the `onAuthStateChanged` Stream.

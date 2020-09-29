@@ -1,3 +1,23 @@
+## 2.0.1
+
+* Fixed an incorrect assert when creating a `GoogleAuthCredential` instance. [(#3216)](https://github.com/FirebaseExtended/flutterfire/pull/3216/files#diff-be71096f90f1a879f17b7c94607b0885)
+
+## 2.0.0
+
+* See the `firebase_auth` plugin changelog.
+
+## 1.1.8
+
+* Update lower bound of dart dependency to 2.0.0.
+
+## 1.1.7
+
+* Use package:plugin_platform_interface
+
+## 1.1.6
+
+* Make the pedantic dev_dependency explicit.
+
 ## 1.1.5
 
 - Fixed typo on private method name.
