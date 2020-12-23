@@ -164,9 +164,22 @@ public class FirebaseMessagingPlugin extends BroadcastReceiver
       long backgroundMessageHandle = 0;
       try {
         @SuppressWarnings("unchecked")
-        Map<String, Long> callbacks = ((Map<String, Long>) call.arguments);
-        setupCallbackHandle = callbacks.get("setupHandle");
-        backgroundMessageHandle = callbacks.get("backgroundHandle");
+        Map<String, Object> callbacks = ((Map<String, Object>) call.arguments);
+
+        Object cb1 = callbacks.get("setupHandle");
+        Object cb2 = callbacks.get("backgroundHandle");
+
+        if (cb1 instanceof Long) {
+          setupCallbackHandle = (Long) cb1;
+        } else {
+          setupCallbackHandle = Long.valueOf((Integer) cb1);
+        }
+
+        if (cb2 instanceof Long) {
+          backgroundMessageHandle = (Long) cb2;
+        } else {
+          backgroundMessageHandle = Long.valueOf((Integer) cb2);
+        }
       } catch (Exception e) {
         Log.e(TAG, "There was an exception when getting callback handle from Dart side");
         e.printStackTrace();
